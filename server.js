@@ -6,6 +6,7 @@ const ejs=require("ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
+const PORT=process.env.PORT || 3000
 
 mongoose.connect("mongodb+srv://akhtar-admin:pulsar150@atlascluster.ux104bi.mongodb.net/placementStats",{ useNewUrlParser: true })
 
@@ -76,6 +77,6 @@ app.post("/search3",(req,res)=>{
 //         res.render("teacherView",{detailedList: detailss});
 //     })
 // })
-app.listen(3000,function(){
+app.listen(PORT,function(){
     console.log("Server started at port 3000.");
 })
