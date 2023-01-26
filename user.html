@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Choice</title>
+    
+    <title>User Choice</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -31,14 +32,33 @@
         .main{
             text-align: center;
         }
-
+        input[type=text] {
+        /* border: none; */
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="main">
         <h1 style="color: white;">Hey there!</h1>
-        <button class="btn" onclick="location.href = 'index.ejs';">View Overall Placement Statistics</button><br>
-        <button class="btn" onclick="location.href = 'index.ejs';">View Company Wise Statistics</button>
+        <button type="button" class="btn btn-primary" style="background:#6c757d" onclick="location.href = 'index.ejs';">Checkout Overall Placement Statistics</button><br>
+        <h2 style="color: white;">Enter Company name to view company wise Statistics.</h2>
+        <form action="/search" method="post"> 
+            <input type="text" name="cname"  placeholder="Enter company name..."><br>
+            <button class="btn btn-primary" type="submit" style="padding: 10px 8px;">View Company Wise Statistics</button>
+        </form>
+        <h2 style="color: white;">View CTC wise Statistics.</h2>
+        <form action="/search3" method="post"> 
+            <input type="text" name="minctc" placeholder="Enter lower bound...">
+            <input type="text" name="maxctc"  placeholder="Enter upper bound..."><br>
+            <button class="btn btn-primary" type="submit" style="padding: 10px 8px;">View CTC Wise Statistics</button>
+        </form>
+        
+        
     </div>
 </body>
 </html>

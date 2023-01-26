@@ -59,18 +59,23 @@ app.post("/",(req,res)=>{
     res.redirect("/");
 })
 app.post("/search",(req,res)=>{
-    details.find({Usn:req.body.usn},function(err,detailss){
+    details.find({Name:req.body.cname},function(err,detailss){
         res.render("index",{detailedList: detailss});
     })
 })
-app.post("/search2",(req,res)=>{ 
-   const tem=req.body.date;
-   console.log(tem);
-    details.find({ '$where': 'this.RegDate.toJSON().slice(0, 10) == "tem"' },function(err,detailss){
-        console.log("Found");
-        res.render("teacherView",{detailedList: detailss});
+app.post("/search3",(req,res)=>{
+    details.find({Ctc:{ $gte: req.body.minctc, $lte: req.body.maxctc }},function(err,detailss){
+        res.render("index",{detailedList: detailss});
     })
 })
+// app.post("/search2",(req,res)=>{ 
+//    const tem=req.body.date;
+//    console.log(tem);
+//     details.find({ '$where': 'this.RegDate.toJSON().slice(0, 10) == "tem"' },function(err,detailss){
+//         console.log("Found");
+//         res.render("teacherView",{detailedList: detailss});
+//     })
+// })
 app.listen(3000,function(){
     console.log("Server started at port 3000.");
 })
